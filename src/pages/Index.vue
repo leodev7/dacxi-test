@@ -64,12 +64,12 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error)
+          this.$q.notify({ type: 'negative', message: `Erro na API. Código: ${error}`})
         })
         .finally(() => {
           setTimeout(() => {
             this.onGetApiData()
-          }, 30000)
+          }, 15000)
         })
     },
 
@@ -77,14 +77,14 @@ export default {
       this.$axios({ method: 'get', url: `https://api.coingecko.com/api/v3/coins/${cryptoName.toLowerCase()}/history?date=${historyPrice}&localization=false` })
         .then((response) => {
           if (!response || !response.data || !response.data.market_data || (response && response.data && !response.data.market_data)) {
-            console.log('Data inválida')
+            this.$q.notify({ type: 'negative', message: 'Data inválida, favor verificar!'})
             this.changeToNull()
             return
           }
           this.price = response.data.market_data.current_price.usd.toFixed(2)
         })
         .catch((error) => {
-          console.log(error)
+          this.$q.notify({ type: 'negative', message: `Erro na API. Código: ${error}`})
         })
     },
 
