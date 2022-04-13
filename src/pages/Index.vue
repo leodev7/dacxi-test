@@ -66,11 +66,11 @@ export default {
         .catch((error) => {
           this.$q.notify({ type: 'negative', message: `Erro na API. Código: ${error}`})
         })
-        // .finally(() => {
-        //   setTimeout(() => {
-        //     this.onGetApiData()
-        //   }, 15000)
-        // })
+        .finally(() => {
+          setTimeout(() => {
+            this.onGetApiData()
+          }, 15000)
+        })
     },
 
     onGetHistoryCryptoPrice (cryptoName, historyPrice) {
