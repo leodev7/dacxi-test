@@ -6,8 +6,8 @@
 
         <template v-slot:header>
           <q-item-section class="text-base text-gray-600">
-            <p class="grid items-baseline sm:flex">{{ cryptoData.name }} ({{ cryptoData.symbol }}) price: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">U$ {{ cryptoData.market_data.current_price.usd }}</code></p>
-            <p class="grid items-baseline sm:flex">Last updated: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">{{ cryptoData.last_updated }}</code></p>
+            <p class="grid items-center sm:flex">{{ cryptoData.name }} ({{ cryptoData.symbol }}) price: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">U$ {{ cryptoData.market_data.current_price.usd }}</code></p>
+            <p class="grid items-center sm:flex">Last updated: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">{{ cryptoData.last_updated }}</code></p>
           </q-item-section>
         </template>
 
@@ -66,11 +66,11 @@ export default {
         .catch((error) => {
           this.$q.notify({ type: 'negative', message: `Erro na API. Código: ${error}`})
         })
-        .finally(() => {
-          setTimeout(() => {
-            this.onGetApiData()
-          }, 15000)
-        })
+        // .finally(() => {
+        //   setTimeout(() => {
+        //     this.onGetApiData()
+        //   }, 15000)
+        // })
     },
 
     onGetHistoryCryptoPrice (cryptoName, historyPrice) {
