@@ -2,10 +2,10 @@
   <q-page>
 
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
-      <div v-for="cryptoData in cryptosDatas" :key="cryptoData.id" class="relative bg-white shadow-xl ring-1 mb-10 ring-gray-900/5 mx-auto w-3/5 lg:w-2/5 rounded-lg px-4 lg:px-10">
+      <div v-for="cryptoData in cryptosDatas" :key="cryptoData.id" class="relative bg-white shadow-xl ring-1 mb-10 ring-gray-900/5 mx-auto w-4/5 md:w-3/5 lg:w-2/5 rounded-lg px-4 lg:px-10">
         <div class="py-8 text-base text-gray-600">
-          <p>{{ cryptoData.name }} ({{ cryptoData.symbol }}) price: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">U$ {{ cryptoData.market_data.current_price.usd }}</code></p>
-          <p>Last updated: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">{{ cryptoData.last_updated }}</code></p>
+          <p class="grid sm:flex items-baseline">{{ cryptoData.name }} ({{ cryptoData.symbol }}) price: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">U$ {{ cryptoData.market_data.current_price.usd }}</code></p>
+          <p class="grid sm:flex items-baseline">Last updated: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">{{ cryptoData.last_updated }}</code></p>
         </div>
       </div>
     </div>
