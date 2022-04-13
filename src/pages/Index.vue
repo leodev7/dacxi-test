@@ -6,8 +6,8 @@
 
         <template v-slot:header>
           <q-item-section class="text-base text-gray-600">
-            <p class="grid items-end sm:flex">{{ cryptoData.name }} ({{ cryptoData.symbol }}) price: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">U$ {{ cryptoData.market_data.current_price.usd }}</code></p>
-            <p class="grid items-end sm:flex">Last updated: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">{{ cryptoData.last_updated }}</code></p>
+            <p class="flex sm:items-baseline">{{ cryptoData.name }} ({{ cryptoData.symbol }}) price: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">U$ {{ cryptoData.market_data.current_price.usd }}</code></p>
+            <p class="flex sm:items-baseline">Last updated: <code class="text-xs sm:text-sm font-bold text-gray-800 sm:pl-3 whitespace-nowrap">{{ cryptoData.last_updated }}</code></p>
           </q-item-section>
         </template>
 
