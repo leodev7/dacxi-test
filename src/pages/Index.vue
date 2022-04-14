@@ -75,6 +75,12 @@ export default {
     },
 
     onGetHistoryCryptoPrice (cryptoName, historyPrice) {
+      if (cryptoName === 'Terra') {
+        cryptoName = 'terra-luna'
+      } else if (cryptoName === 'Cosmos Hub') {
+        cryptoName = 'cosmos'
+      }
+
       this.$axios({ method: 'get', url: `https://api.coingecko.com/api/v3/coins/${cryptoName.toLowerCase()}/history?date=${historyPrice}&localization=false` })
         .then((response) => {
           if (!response || !response.data || !response.data.market_data || (response && response.data && !response.data.market_data)) {
