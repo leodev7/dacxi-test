@@ -1,9 +1,9 @@
 {
   "name": "dacxi",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
-  "author": "Leonardo Gonçalves <leonard296@live.com>",
+  "description": "Technical test for frontend development team",
+  "productName": "Technical test frontend - Dacxi",
+  "author": "Leonardo Gonçalves <leop.contato@gmail.com>",
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"

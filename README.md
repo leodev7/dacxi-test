@@ -18,4 +18,4 @@ Ou
 quasar build
 
 * (Entrar na pasta dacxi/dist/spa e abrir index.html)
-``
+```
