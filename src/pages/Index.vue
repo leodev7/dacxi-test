@@ -15,7 +15,7 @@
           <q-card-section>
             <p>Insira uma data</p>
             <div class="grid sm:flex sm:flex-nowrap">
-              <q-input dense autofocus outlined clearable color="black" text-color="black" class="full-width" placeholder="31-12-2021" v-model="historyPrice" mask="##-##-####" @update:model-value="changeToNull()" />
+              <q-input dense autofocus outlined clearable color="black" text-color="black" class="full-width" inputmode="decimal" placeholder="31-12-2021" v-model="historyPrice" mask="##-##-####" @update:model-value="changeToNull()" />
               <q-btn :disable="!historyPrice || historyPrice.length < 10" label="Pesquisar" class="mt-4 ml-0 sm:mt-0 sm:ml-4 bg-gray-800 text-white text-capitalize" @click="onGetHistoryCryptoPrice(cryptoData.name, historyPrice)" />
             </div>
             <p class="mt-4" v-if="price">O valor da criptomoeda <code class="text-xs sm:text-sm font-bold text-gray-800 hover:underline" style="text-decoration-style: wavy">{{ cryptoData.name }}</code> na data <code class="text-xs sm:text-sm font-bold text-gray-800 whitespace-nowrap hover:underline" style="text-decoration-style: wavy">{{ historyPrice }}</code> era de <code class="text-xs sm:text-sm font-bold text-gray-800 whitespace-nowrap hover:underline" style="text-decoration-style: wavy">U$ {{ price }}</code></p>
