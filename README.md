@@ -1,21 +1,21 @@
-# Quasar App (dacxi)
+# Dacxi test
 
-A Quasar Framework app
+Teste tecnico para Dacxi usando o framework Quasar (Vue js)
 
-## Install the dependencies
+## Instalação das dependências (após clonar)
 ```bash
-yarn
+npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Iniciar aplicação/sistema em modo de desenvolvimento
 ```bash
 quasar dev
 ```
+Ou
 
-### Build the app for production
+### Compilar o aplicativo para usar (após subir no servidor)
 ```bash
 quasar build
-```
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+* (Entrar na pasta dacxi/dist/spa e abrir index.html)
+``
