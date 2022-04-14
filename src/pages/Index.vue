@@ -15,10 +15,10 @@
           <q-card-section>
             <p>Insira uma data</p>
             <div class="grid sm:flex sm:flex-nowrap">
-              <q-input dense autofocus outlined clearable color="black" text-color="black" class="full-width" placeholder="31-12-2021" v-model="cryptosDatas.historyPrice" mask="##-##-####" @update:model-value="changeToNull()" />
-              <q-btn :disable="!cryptosDatas.historyPrice || cryptosDatas.historyPrice.length < 10" label="Pesquisar" class="mt-4 ml-0 sm:mt-0 sm:ml-4 bg-gray-800 text-white text-capitalize" @click="onGetHistoryCryptoPrice(cryptoData.name, cryptosDatas.historyPrice)" />
+              <q-input dense autofocus outlined clearable color="black" text-color="black" class="full-width" placeholder="31-12-2021" v-model="historyPrice" mask="##-##-####" @update:model-value="changeToNull()" />
+              <q-btn :disable="!historyPrice || historyPrice.length < 10" label="Pesquisar" class="mt-4 ml-0 sm:mt-0 sm:ml-4 bg-gray-800 text-white text-capitalize" @click="onGetHistoryCryptoPrice(cryptoData.name, historyPrice)" />
             </div>
-            <p class="mt-4" v-if="price">O valor do(a) <code class="text-xs sm:text-sm font-bold text-gray-800">{{ cryptoData.name }}</code> na data <code class="text-xs sm:text-sm font-bold text-gray-800 whitespace-nowrap">{{ cryptosDatas.historyPrice }}</code> era de <code class="text-xs sm:text-sm font-bold text-gray-800 whitespace-nowrap">U$ {{ price }}</code></p>
+            <p class="mt-4" v-if="price">O valor do(a) <code class="text-xs sm:text-sm font-bold text-gray-800">{{ cryptoData.name }}</code> na data <code class="text-xs sm:text-sm font-bold text-gray-800 whitespace-nowrap">{{ historyPrice }}</code> era de <code class="text-xs sm:text-sm font-bold text-gray-800 whitespace-nowrap">U$ {{ price }}</code></p>
           </q-card-section>
         </q-card>
 
@@ -36,9 +36,15 @@ export default {
   data () {
     return {
       cryptosDatas: [],
-      ticker: ['bitcoin', 'ethereum', 'dacxi' , 'terra-luna', 'cosmos'],
-      url: [],
-      price: null
+      url: [
+        'https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/ethereum?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/dacxi?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/terra-luna?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false',
+        'https://api.coingecko.com/api/v3/coins/cosmos?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false'
+      ],
+      price: null,
+      historyPrice: null
     }
   },
 
@@ -48,15 +54,10 @@ export default {
 
   methods: {
     onGetApiData () {
-      this.url = []
-      this.cryptosDatas = []
-
-      for (var i = 0; i < this.ticker.length; i++) {
-        this.url.push(this.$axios.get(`https://api.coingecko.com/api/v3/coins/${this.ticker[i]}?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false`))
-      }
-
-      this.$axios.all([this.url[0], this.url[1], this.url[2], this.url[3], this.url[4]])
+      this.$axios.all(this.url.map((url) => this.$axios.get(url)))
         .then((response) => {
+          this.cryptosDatas = []
+
           for (var i = 0; i < response.length; i++) {
             this.cryptosDatas.push(response[i].data)
             this.cryptosDatas[i].symbol = this.cryptosDatas[i].symbol.toUpperCase()
@@ -94,7 +95,7 @@ export default {
 
     clearWhenExpand () {
       this.changeToNull()
-      this.cryptosDatas.historyPrice = null
+      this.historyPrice = null
     }
   }
 }
