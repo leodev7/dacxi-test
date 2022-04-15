@@ -3,7 +3,7 @@
 
     <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50">
       <transition appear enter-active-class="animated rubberBand infinite">
-        <p class="mx-auto flex items-end text-gray-500">No need refresh page *</p>
+        <p class="mx-auto flex items-end text-gray-500">Don't need to refresh *</p>
       </transition>
       <transition-group appear enter-active-class="animated fadeInRightBig slow">
         <q-expansion-item group="somegroup" v-for="cryptoData in cryptosDatas" :key="cryptoData.id" @show="clearWhenExpand()" class="relative bg-white shadow-xl ring-1 ring-gray-900/5 my-5 mx-auto w-4/5 md:w-3/5 lg:w-2/5 rounded-lg px-4 lg:px-10 lg:py-5">
