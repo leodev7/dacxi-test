@@ -6,12 +6,14 @@
   "author": "Leonardo Gonçalves <leop.contato@gmail.com>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=master"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "push-dir": "^0.4.1",
     "quasar": "^2.0.0",
     "vue": "^3.2.31",
     "vue-router": "^4.0.0"
